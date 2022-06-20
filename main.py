@@ -20,12 +20,11 @@ def execute_bot():
 
 
 root = tk.Tk()
+root.title("8u.com Bot")
 canvas = tk.Canvas(root, width=600, height=300)
 
-title = Label(root, text="8u Bot").grid(row=0)
-
 # Credentials
-Label(root, text="Credentials").grid(row=1)
+Label(root, text="Credentials", font=('Helvetica', 14, 'bold')).grid(row=1, pady=10)
 
 Label(root, text="Username").grid(row=2)
 username = Entry(root)
@@ -38,7 +37,7 @@ password.grid(row=3, column=1)
 password.insert(0, "Aa1234567890")
 
 # Settings
-Label(root, text="Settings").grid(row=4)
+Label(root, text="Settings", font=('Helvetica', 14, 'bold')).grid(row=4, pady=10)
 
 Label(root, text="game_name").grid(row=5)
 game_name = Entry(root)
