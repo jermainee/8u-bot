@@ -82,16 +82,16 @@ high_threshold = Entry(root)
 high_threshold.grid(row=12, column=1)
 high_threshold.insert(0, 10)
 
-Label(root, text="high_bet_type").grid(row=12)
+Label(root, text="high_bet_type").grid(row=13)
 high_bet_type = Entry(root)
-high_bet_type.grid(row=12, column=1)
+high_bet_type.grid(row=13, column=1)
 high_bet_type.insert(0, "small")
 
-Label(root, text="max_bets").grid(row=13)
+Label(root, text="max_bets").grid(row=14)
 max_bets = Entry(root)
-max_bets.grid(row=13, column=1)
+max_bets.grid(row=14, column=1)
 max_bets.insert(0, "8")
 
-Button(root, text='Execute', command=execute_bot).grid(row=14, column=1, sticky=W, pady=4)
+Button(root, text='Execute', command=execute_bot).grid(row=15, column=1, sticky=W, pady=4)
 
 root.mainloop()
