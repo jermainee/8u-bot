@@ -57,8 +57,6 @@ class Bot:
             while not self.recursive_betting(current_bet_type, self.initial_bet_amount, self.max_bets):
                 print("[result] loss")
 
-            print("[result] won")
-
             time.sleep(self.minutes * 60)
 
     def calculate_score(self):
@@ -119,10 +117,10 @@ class Bot:
            EC.element_to_be_clickable((By.XPATH, "//html/body/div[7]/div[2]/div/div/div[3]/div/button[2]/span"))
         ).click()
 
-
     def recursive_betting(self, bet_type, bet_amount, bets_left):
         if (bets_left == 0):
-            return False
+            print("[exit] maximum bets")
+            return True
         else:
             bets_left -= 1
 
@@ -132,6 +130,7 @@ class Bot:
         time.sleep(self.minutes * 60)
 
         if self.has_won():
+            print("[result] won")
             return True
         else:
             self.recursive_betting(bet_type, bet_amount * self.loss_multiplicator, bets_left)
