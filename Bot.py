@@ -113,11 +113,12 @@ class Bot:
         WebDriverWait(self.webdriver, 20).until(
             EC.element_to_be_clickable((By.XPATH, "//span[contains(text(), 'Bet Now')]"))).click()
 
-        # WebDriverWait(self.webdriver, 20).until(
-        #   EC.element_to_be_clickable((By.XPATH, "//span[contains(text(), 'OK')]"))
-        # ).click()
+        time.sleep(1)
 
-        # self.webdriver.execute_script("document.getElementsByName('username')[0].click();")
+        WebDriverWait(self.webdriver, 20).until(
+           EC.element_to_be_clickable((By.XPATH, "//html/body/div[7]/div[2]/div/div/div[3]/div/button[2]/span"))
+        ).click()
+
 
     def recursive_betting(self, bet_type, bet_amount, bets_left):
         if (bets_left == 0):
