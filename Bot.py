@@ -2,6 +2,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from seleniumrequests import Firefox
+import requests
 import time
 
 
@@ -40,11 +41,13 @@ class Bot:
         self.webdriver = webdriver
 
     def execute(self):
+        self.has_won()
+
+        return
+
         while True:
             current_score = self.calculate_score()
             print("[score]", current_score)
-
-            current_score = -10
 
             if current_score >= self.high_threshold:
                 current_bet_type = self.high_bet_type
@@ -77,15 +80,14 @@ class Bot:
         return score
 
     def has_won(self):
-        return False
+        self.webdriver.get("https://8u.com/#/gameCenter?gameName=" + self.game_name)
 
-        # response = webdriver.request(
-        #   'POST',
-        #   'https://8u.com/api/game/gameOrder/list',
-        #   data={"gameName": gameName, "pageNo": "1", "pageSize": "10"}
-        # ).json()
-        # print(response)
-        # return response['data'][0]['winAllAmount'].isnumeric()
+        token = self.webdriver.execute_script("return window.localStorage.getItem('TOKEN');")
+        url = 'https://8u.com/api/game/gameOrder/list'
+        headers = {'x-auth-token': token}
+        response = requests.post(url, data="pageNo=1&pageSize=10&gameName=CQK3M&startTime=&endTime=", headers=headers)
+
+        return response['data'][0]['winAllAmount'].isnumeric()
 
     def bet(self, bet_type, bet_amount):
         print("[bet]", bet_type, bet_amount)
