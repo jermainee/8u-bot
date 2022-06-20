@@ -10,14 +10,22 @@ Tooling that automates your betting interactions on 8u.com implemented in Python
 </p>
 
 ## Installation
-1. Install python3
-2. Install Selenium with Firefox and the Geckodriver (https://medium.com/@stefan.preusler/selenium-firefox-in-python-auf-einem-ubuntu-server-df4abc818853
-3. Start the bot using cli
+Execute `sudo ./install.sh` in your command line interface.
+
+Or install the following packages manually:
+
+- [Python3](https://www.python.org/download/releases/)
+- [Selenium](https://pypi.org/project/selenium/)
+- [Selenium Requests](https://pypi.org/project/selenium-requests/)
+- [Firefox](https://www.mozilla.org/de/firefox/download/thanks/)
+- [Geckodriver](https://github.com/mozilla/geckodriver/releases)
+- [Tkinter](https://docs.python.org/3/library/tkinter.html)
 
 ### Starting the bot (cli)
 ```
 python3 main.py
 ```
+or double click on `main.py`
 
 ## GUI Settings
 ### Credentials
