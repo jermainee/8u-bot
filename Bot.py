@@ -84,7 +84,15 @@ class Bot:
         WebDriverWait(self.webdriver, 20).until(
             EC.element_to_be_clickable((By.XPATH, "//html/body/div[2]/div[1]/div[3]/div[3]/div[1]/span[2]"))).click()
 
-        return self.webdriver.find_element(by=By.XPATH, value="//html/body/div[2]/div[1]/div[3]/div[3]/div[2]/div[1]/div[1]/span").text != '0.00 USDT'
+        win_all_amount_element = WebDriverWait(self.webdriver, 20).until(
+            EC.presence_of_element_located((By.XPATH, "//html/body/div[2]/div[1]/div[3]/div[3]/div[2]/div[1]/div[1]/span")))
+
+        win_all_amount = win_all_amount_element.text
+
+        if win_all_amount == 'No Result':
+            return self.has_won()
+
+        return win_all_amount != '0.00 USDT'
 
     def bet(self, bet_type, bet_amount):
         print("[bet]", bet_type, bet_amount)
