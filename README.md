@@ -47,3 +47,4 @@ Enter your 8u.com user credentials, with which the bot logs into your account.
 | low_bet_type | Bet type which should be set when the low_threshold is reached, e.g. "big" |
 | high_threshold | First highest threshold from which score a bet should be placed, e.g. 10 |
 | high_bet_type | Bet type which should be set when the high_threshold is reached, e.g. "small" |
+| max_bets | Max number of bets that should be places in one iteration, e.g. 8 |

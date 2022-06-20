@@ -18,7 +18,8 @@ class Bot:
         low_threshold,
         low_bet_type,
         high_threshold,
-        high_bet_type
+        high_bet_type,
+        max_bets
     ):
         self.game_name = game_name
         self.minutes = minutes
@@ -29,6 +30,7 @@ class Bot:
         self.low_bet_type = low_bet_type
         self.high_threshold = high_threshold
         self.high_bet_type = high_bet_type
+        self.max_bets = max_bets
 
         webdriver = Firefox()
         webdriver.get("https://8u.com/#/login")
@@ -52,7 +54,7 @@ class Bot:
                 time.sleep(self.minutes * 60)
                 continue
 
-            while not self.recursive_betting(current_bet_type, self.initial_bet_amount):
+            while not self.recursive_betting(current_bet_type, self.initial_bet_amount, self.max_bets):
                 print("[result] loss")
 
             print("[result] won")
@@ -117,7 +119,12 @@ class Bot:
 
         # self.webdriver.execute_script("document.getElementsByName('username')[0].click();")
 
-    def recursive_betting(self, bet_type, bet_amount):
+    def recursive_betting(self, bet_type, bet_amount, bets_left):
+        if (bets_left == 0):
+            return False
+        else:
+            bets_left -= 1
+
         self.bet(bet_type, bet_amount)
 
         print("[waiting] waiting for next game")
@@ -126,4 +133,4 @@ class Bot:
         if self.has_won():
             return True
         else:
-            self.recursive_betting(bet_type, bet_amount * self.loss_multiplicator)
+            self.recursive_betting(bet_type, bet_amount * self.loss_multiplicator, bets_left)

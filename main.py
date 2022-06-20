@@ -15,7 +15,8 @@ def execute_bot():
         low_threshold=int(low_threshold.get()),
         low_bet_type=low_bet_type.get(),
         high_threshold=int(high_threshold.get()),
-        high_bet_type=high_bet_type.get()
+        high_bet_type=high_bet_type.get(),
+        max_bets=int(max_bets.get())
     ).execute()
 
 
@@ -84,6 +85,11 @@ high_bet_type = Entry(root)
 high_bet_type.grid(row=12, column=1)
 high_bet_type.insert(0, "small")
 
-Button(root, text='Execute', command=execute_bot).grid(row=13, column=1, sticky=W, pady=4)
+Label(root, text="max_bets").grid(row=13)
+max_bets = Entry(root)
+max_bets.grid(row=13, column=1)
+max_bets.insert(0, "8")
+
+Button(root, text='Execute', command=execute_bot).grid(row=14, column=1, sticky=W, pady=4)
 
 root.mainloop()
