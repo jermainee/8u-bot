@@ -41,10 +41,6 @@ class Bot:
         self.webdriver = webdriver
 
     def execute(self):
-        self.has_won()
-
-        return
-
         while True:
             current_score = self.calculate_score()
             print("[score]", current_score)
@@ -82,12 +78,12 @@ class Bot:
     def has_won(self):
         self.webdriver.get("https://8u.com/#/gameCenter?gameName=" + self.game_name)
 
-        token = self.webdriver.execute_script("return window.localStorage.getItem('TOKEN');")
-        url = 'https://8u.com/api/game/gameOrder/list'
-        headers = {'x-auth-token': token}
-        response = requests.post(url, data="pageNo=1&pageSize=10&gameName=CQK3M&startTime=&endTime=", headers=headers)
+        time.sleep(3)
 
-        return response['data'][0]['winAllAmount'].isnumeric()
+        WebDriverWait(self.webdriver, 20).until(
+            EC.element_to_be_clickable((By.XPATH, "//html/body/div[2]/div[1]/div[3]/div[3]/div[1]/span[2]"))).click()
+
+        return self.webdriver.find_element(by=By.XPATH, value="//html/body/div[2]/div[1]/div[3]/div[3]/div[2]/div[1]/div[1]/span").text != '0.00 USDT'
 
     def bet(self, bet_type, bet_amount):
         print("[bet]", bet_type, bet_amount)
@@ -115,9 +111,9 @@ class Bot:
 
         time.sleep(1)
 
-        WebDriverWait(self.webdriver, 20).until(
-           EC.element_to_be_clickable((By.XPATH, "//html/body/div[7]/div[2]/div/div/div[3]/div/button[2]/span"))
-        ).click()
+        # WebDriverWait(self.webdriver, 20).until(
+        #    EC.element_to_be_clickable((By.XPATH, "//html/body/div[7]/div[2]/div/div/div[3]/div/button[2]/span"))
+        # ).click()
 
     def recursive_betting(self, bet_type, bet_amount, bets_left):
         if (bets_left == 0):
