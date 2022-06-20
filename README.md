@@ -27,6 +27,9 @@ python3 main.py
 ```
 or double click on `main.py`
 
+### Stopping the bot
+To stop the bot, simply press `CTRL + C` in the cli window.
+
 ## GUI Settings
 ### Credentials
 Enter your 8u.com user credentials, with which the bot logs into your account.
