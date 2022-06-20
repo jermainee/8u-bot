@@ -44,11 +44,13 @@ Label(root, text="game_name").grid(row=5)
 game_name = Entry(root)
 game_name.grid(row=5, column=1)
 game_name.insert(0, "CQK3M")
+game_name.configure(state='disabled')
 
 Label(root, text="minutes").grid(row=6)
 minutes = Entry(root)
 minutes.grid(row=6, column=1)
 minutes.insert(0, 3)
+minutes.configure(state='disabled')
 
 Label(root, text="history_length").grid(row=7)
 history_length = Entry(root)
