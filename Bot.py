@@ -50,6 +50,7 @@ class Bot:
             elif current_score <= self.low_threshold:
                 current_bet_type = self.low_bet_type
             else:
+                print("[waiting] waiting for next game")
                 time.sleep(self.minutes * 60)
                 continue
 
