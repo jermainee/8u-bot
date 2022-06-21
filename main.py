@@ -33,7 +33,7 @@ username.grid(row=2, column=1)
 username.insert(0, "flovo94")
 
 Label(root, text="Password").grid(row=3)
-password = Entry(root)
+password = Entry(root, show="*")
 password.grid(row=3, column=1)
 password.insert(0, "Aa1234567890")
 
