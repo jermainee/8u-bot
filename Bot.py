@@ -33,6 +33,8 @@ class Bot:
         self.high_bet_type = high_bet_type
         self.max_bets = max_bets
 
+        self.start_time = 0
+
         webdriver = Firefox()
         webdriver.get("https://8u.com/#/login")
         webdriver.find_element(by=By.NAME, value="user").send_keys(username)
@@ -42,6 +44,8 @@ class Bot:
 
     def execute(self):
         while True:
+            self.start_time = time.time()
+
             current_score = self.calculate_score()
             print("[score]", current_score)
 
@@ -50,14 +54,13 @@ class Bot:
             elif current_score <= self.low_threshold:
                 current_bet_type = self.low_bet_type
             else:
-                print("[waiting] waiting for next game")
-                time.sleep(self.minutes * 60)
+                self.wait_for_next_round()
                 continue
 
             while not self.recursive_betting(current_bet_type, self.initial_bet_amount, self.max_bets):
                 print("[result] loss")
 
-            time.sleep(self.minutes * 60)
+            self.wait_for_next_round()
 
     def calculate_score(self):
         response = self.webdriver.request('POST', 'https://8u.com/api/game/gameDraw/history',
@@ -131,13 +134,29 @@ class Bot:
         else:
             bets_left -= 1
 
-        self.bet(bet_type, bet_amount)
+        if self.start_time == 0:
+            self.start_time = time.time()
 
-        print("[waiting] waiting for next game")
-        time.sleep(self.minutes * 60)
+        self.bet(bet_type, bet_amount)
+        self.wait_for_next_round()
 
         if self.has_won():
             print("[result] won")
             return True
         else:
             self.recursive_betting(bet_type, bet_amount * self.loss_multiplicator, bets_left)
+
+    def wait_for_next_round(self):
+        end_time = time.time()
+        time_elapsed = (end_time - self.start_time)
+        waiting_seconds = ((self.minutes * 60) - time_elapsed)
+
+        print("[duration]", round(time_elapsed, 2), "seconds")
+        print("[waiting] waiting",  round(waiting_seconds / 60, 2), "minutes for next game")
+
+        self.start_time = 0
+
+        if waiting_seconds <= 0:
+            return
+
+        time.sleep(waiting_seconds)
