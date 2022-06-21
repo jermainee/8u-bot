@@ -138,12 +138,12 @@ class Bot:
             self.start_time = time.time()
 
         self.bet(bet_type, bet_amount)
-        self.wait_for_next_round()
 
         if self.has_won():
             print("[result] won")
             return True
         else:
+            self.wait_for_next_round()
             self.recursive_betting(bet_type, bet_amount * self.loss_multiplicator, bets_left)
 
     def wait_for_next_round(self):
