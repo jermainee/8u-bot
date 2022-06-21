@@ -151,7 +151,7 @@ class Bot:
         time_elapsed = (end_time - self.start_time)
         waiting_seconds = ((self.minutes * 60) - time_elapsed)
 
-        print("[duration]", round(time_elapsed, 2), "seconds")
+        print("[duration]", round(time_elapsed / 60, 2), "minutes")
         print("[waiting] waiting",  round(waiting_seconds / 60, 2), "minutes for next game")
 
         self.start_time = 0
