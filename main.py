@@ -30,12 +30,10 @@ Label(root, text="Credentials", font=('Helvetica', 14, 'bold')).grid(row=1, pady
 Label(root, text="Username").grid(row=2)
 username = Entry(root)
 username.grid(row=2, column=1)
-username.insert(0, "flovo94")
 
 Label(root, text="Password").grid(row=3)
 password = Entry(root, show="*")
 password.grid(row=3, column=1)
-password.insert(0, "Aa1234567890")
 
 # Settings
 Label(root, text="Settings", font=('Helvetica', 14, 'bold')).grid(row=4, pady=10)
