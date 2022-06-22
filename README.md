@@ -15,7 +15,7 @@ Execute `sudo ./install.sh` in your command line interface.
 
 ### Windows
 1. Install [Firefox](https://www.mozilla.org/de/firefox/new/)
-2. Install [GitHub Desktop](https://desktop.github.com/])
+2. Install [GitHub Desktop](https://desktop.github.com/)
 3. Clone this repository using GitHub Desktop
 4. Download and unzip [geckodriver](https://github.com/mozilla/geckodriver/releases) into the cloned repository
 5. Add geckodriver to [Windows PATH](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/)
