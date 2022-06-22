@@ -2,6 +2,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from seleniumrequests import Firefox
+from selenium.webdriver.firefox.options import Options
 import requests
 import time
 
@@ -20,7 +21,8 @@ class Bot:
         low_bet_type,
         high_threshold,
         high_bet_type,
-        max_bets
+        max_bets,
+        headless
     ):
         self.game_name = game_name
         self.minutes = minutes
@@ -35,7 +37,13 @@ class Bot:
 
         self.start_time = 0
 
-        webdriver = Firefox()
+        is_headless = (headless == "true")
+        print("[headless]", is_headless)
+
+        options = Options()
+        options.headless = is_headless
+
+        webdriver = Firefox(options=options)
         webdriver.get("https://8u.com/#/login")
         webdriver.find_element(by=By.NAME, value="user").send_keys(username)
         webdriver.find_element(by=By.CSS_SELECTOR, value="input[type='password']").send_keys(password)

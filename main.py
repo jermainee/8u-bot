@@ -16,7 +16,8 @@ def execute_bot():
         low_bet_type=low_bet_type.get(),
         high_threshold=int(high_threshold.get()),
         high_bet_type=high_bet_type.get(),
-        max_bets=int(max_bets.get())
+        max_bets=int(max_bets.get()),
+        headless=headless.get()
     ).execute()
 
 
@@ -90,6 +91,13 @@ max_bets = Entry(root)
 max_bets.grid(row=14, column=1)
 max_bets.insert(0, "8")
 
-Button(root, text='Execute', command=execute_bot).grid(row=15, column=1, sticky=W, pady=4)
+headless = StringVar(root)
+headless.set("true")
+
+Label(root, text="headless").grid(row=15)
+option = OptionMenu(root, headless, "true", "false")
+option.grid(row=15, column=1)
+
+Button(root, text='Execute', command=execute_bot).grid(row=16, column=1, sticky=W, pady=4)
 
 root.mainloop()
