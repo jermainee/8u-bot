@@ -92,7 +92,7 @@ max_bets.grid(row=14, column=1)
 max_bets.insert(0, "8")
 
 headless = StringVar(root)
-headless.set("true")
+headless.set("false")
 
 Label(root, text="headless").grid(row=15)
 option = OptionMenu(root, headless, "true", "false")
