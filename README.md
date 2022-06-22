@@ -10,9 +10,21 @@ Tooling that automates your betting interactions on 8u.com implemented in Python
 </p>
 
 ## Installation
+### Linux
 Execute `sudo ./install.sh` in your command line interface.
 
-Or install the following packages manually:
+### Windows
+1. Install [GitHub Desktop](https://desktop.github.com/])
+2. Clone this repository using GitHub Desktop
+3. Install [Firefox](https://www.mozilla.org/de/firefox/new/)
+4. Download and unzip [geckodriver](https://github.com/mozilla/geckodriver/releases) into the cloned repository
+5. Add geckodriver to [Windows PATH](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/)
+6. Install [Python3](https://www.python.org/downloads/)
+7. Run in CMD `py -m pip install selenium`
+8. Run in CMD `py -m pip install selenium-requests`
+
+### Manually
+Install the following packages manually:
 
 - [Python3](https://www.python.org/download/releases/)
 - [Selenium](https://pypi.org/project/selenium/)
