@@ -48,7 +48,7 @@ Enter your 8u.com user credentials, with which the bot logs into your account.
 
 ### Settings
 
-| Tables   |      Are      |
+| Variable   |      Description      |
 |----------|:-------------:|
 | game_name | Game identifier of 8u.com, which can be found in the url of the game |
 | minutes | Number of minutes of one game round |
