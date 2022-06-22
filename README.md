@@ -28,7 +28,7 @@ python3 main.py
 or double click on `main.py`
 
 ### Stopping the bot
-To stop the bot, simply pressing `CTRL + C` in the cli window.
+To stop the bot, simply press `CTRL + C` in the cli window.
 
 ## GUI Settings
 ### Credentials
